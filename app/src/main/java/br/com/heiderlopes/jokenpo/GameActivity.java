@@ -1,5 +1,6 @@
 package br.com.heiderlopes.jokenpo;
 
+import android.media.MediaPlayer;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -69,6 +70,9 @@ public class GameActivity extends AppCompatActivity {
     private void realizaJogada(int jogadaPlayer) {
 
         int jogadaPC = numeroAleatorio.nextInt(3) + 1;
+
+        MediaPlayer player = MediaPlayer.create(this, R.raw.jokenpo);
+        player.start();
 
         switch (jogadaPC) {
             case PEDRA:
