@@ -6,5 +6,9 @@
 
     <color name="vitoria">#17d129</color>
     <color name="derrota">#ff4043</color>
-    <color name="empate">#000000</color>
+    <color name="empate">#FFFFFF</color>
+
+    <color name="background">#000000</color>
+    <color name="background_splash">#000000</color>
+    <color name="background_gladiador">#332615</color>
 </resources>

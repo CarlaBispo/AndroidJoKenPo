@@ -1,102 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@color/background"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="br.com.heiderlopes.jokenpo.GameActivity">
 
-    <TextView
-        android:id="@+id/tvOpcoes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/opcoes"
-        android:textSize="30sp" />
+    <include layout="@layout/game_header" />
+
+    <include layout="@layout/game_footer" />
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:alpha="0.2"
+        android:src="@drawable/jokenpo_splash_gladiador2" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/header"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btPedra"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/pedra" />
-
-        <Button
-            android:id="@+id/btPapel"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/papel" />
-
-
-        <Button
-            android:id="@+id/btTesoura"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/tesoura" />
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ultimaJogada"
-        android:textSize="30sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:gravity="center"
-            android:text="@string/jogadaPlayer" />
+            android:orientation="horizontal">
 
-        <TextView
+            <ImageView
+                android:id="@+id/ivJogadaPlayer"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentLeft="true"
+                android:layout_weight="0.5"
+                android:rotation="90"
+                tools:src="@drawable/m_pedra" />
+
+            <ImageView
+                android:id="@+id/ivJogadaPC"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentRight="true"
+                android:layout_weight="0.5"
+                android:rotation="270"
+                tools:src="@drawable/m_tesoura" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:gravity="center"
-            android:text="@string/jogadaPC" />
+            android:orientation="vertical"
+            android:background="#66FFFFFF"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivResultado"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+
+                tools:src="@drawable/empate" />
+
+            <TextView
+                android:id="@+id/tvResultado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivResultado"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:textSize="24sp"
+                tools:text="@string/venceu" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/ivJogadaPlayer"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_weight="0.5"/>
-
-        <ImageView
-            android:id="@+id/ivJogadaPC"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_weight="0.5"/>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/resultado"
-        android:textSize="32sp"/>
-
-    <TextView
-        android:id="@+id/tvResultado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/venceu" />
-</LinearLayout>
+</RelativeLayout>

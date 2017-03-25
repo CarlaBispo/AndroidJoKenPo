@@ -8,4 +8,25 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- FullScreen theme. -->
+    <style name="FullScreen" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="score_label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0.5</item>
+        <item name="android:textColor">#FFF</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="score_valor" parent="score_label">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
 </resources>

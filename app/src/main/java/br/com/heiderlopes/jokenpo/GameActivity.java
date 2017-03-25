@@ -5,6 +5,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +21,14 @@ public class GameActivity extends AppCompatActivity {
     private final int PAPEL = 2;
     private final int TESOURA = 3;
 
+    private int totalVitorias = 0;
+    private int totalEmpates = 0;
+    private int totalDerrotas = 0;
+
+    private TextView tvVitorias;
+    private TextView tvDerrotas;
+    private TextView tvEmpates;
+
     private Button btPedra;
     private Button btPapel;
     private Button btTesoura;
@@ -27,6 +37,7 @@ public class GameActivity extends AppCompatActivity {
     private ImageView ivJogadaPC;
 
     private TextView tvResultado;
+    private ImageView ivResultado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +46,20 @@ public class GameActivity extends AppCompatActivity {
 
         numeroAleatorio = new Random();
 
+        tvVitorias = (TextView) findViewById(R.id.tvVitorias);
+        tvDerrotas = (TextView) findViewById(R.id.tvDerrotas);
+        tvEmpates = (TextView) findViewById(R.id.tvEmpates);
+
         ivJogadaPlayer = (ImageView) findViewById(R.id.ivJogadaPlayer);
         ivJogadaPC = (ImageView) findViewById(R.id.ivJogadaPC);
         tvResultado = (TextView) findViewById(R.id.tvResultado);
+        ivResultado = (ImageView) findViewById(R.id.ivResultado);
 
         btPedra = (Button) findViewById(R.id.btPedra);
         btPedra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ivJogadaPlayer.setImageDrawable(ContextCompat.getDrawable(GameActivity.this, R.drawable.pedra));
+                ivJogadaPlayer.setImageDrawable(ContextCompat.getDrawable(GameActivity.this, R.drawable.m_pedra));
                 realizaJogada(PEDRA);
             }
         });
@@ -52,7 +68,7 @@ public class GameActivity extends AppCompatActivity {
         btPapel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ivJogadaPlayer.setImageDrawable(ContextCompat.getDrawable(GameActivity.this, R.drawable.papel));
+                ivJogadaPlayer.setImageDrawable(ContextCompat.getDrawable(GameActivity.this, R.drawable.m_papel));
                 realizaJogada(PAPEL);
             }
         });
@@ -61,7 +77,7 @@ public class GameActivity extends AppCompatActivity {
         btTesoura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ivJogadaPlayer.setImageDrawable(ContextCompat.getDrawable(GameActivity.this, R.drawable.tesoura));
+                ivJogadaPlayer.setImageDrawable(ContextCompat.getDrawable(GameActivity.this, R.drawable.m_tesoura));
                 realizaJogada(TESOURA);
             }
         });
@@ -76,7 +92,7 @@ public class GameActivity extends AppCompatActivity {
 
         switch (jogadaPC) {
             case PEDRA:
-                ivJogadaPC.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.pedra));
+                ivJogadaPC.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.m_pedra));
                 switch (jogadaPlayer) {
                     case PAPEL:
                         venceu();
@@ -91,7 +107,7 @@ public class GameActivity extends AppCompatActivity {
                 break;
 
             case PAPEL:
-                ivJogadaPC.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.papel));
+                ivJogadaPC.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.m_papel));
                 switch (jogadaPlayer) {
                     case PAPEL:
                         empatou();
@@ -106,7 +122,7 @@ public class GameActivity extends AppCompatActivity {
                 break;
 
             case TESOURA:
-                ivJogadaPC.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.tesoura));
+                ivJogadaPC.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.m_tesoura));
                 switch (jogadaPlayer) {
                     case PAPEL:
                         perdeu();
@@ -125,15 +141,37 @@ public class GameActivity extends AppCompatActivity {
     private void venceu() {
         tvResultado.setText(getString(R.string.venceu));
         tvResultado.setTextColor(ContextCompat.getColor(this, R.color.vitoria));
+        ivResultado.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.vitoria));
+        totalVitorias++;
+        tvVitorias.setText(String.valueOf(totalVitorias));
+        animarScore(tvVitorias);
     }
 
     private void perdeu() {
         tvResultado.setText(getString(R.string.perdeu));
         tvResultado.setTextColor(ContextCompat.getColor(this, R.color.derrota));
+        ivResultado.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.derrota));
+        totalDerrotas++;
+        tvDerrotas.setText(String.valueOf(totalDerrotas));
+        animarScore(tvDerrotas);
     }
 
     private void empatou() {
         tvResultado.setText(getString(R.string.empatou));
         tvResultado.setTextColor(ContextCompat.getColor(this, R.color.empate));
+        ivResultado.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.empate));
+        totalEmpates++;
+        tvEmpates.setText(String.valueOf(totalEmpates));
+        animarScore(tvEmpates);
+    }
+
+    private void animarScore(View v) {
+        Animation anim = AnimationUtils.loadAnimation(this, R.anim.ponto_animacao);
+        anim.reset();
+
+        if (v != null) {
+            v.clearAnimation();
+            v.startAnimation(anim);
+        }
     }
 }
