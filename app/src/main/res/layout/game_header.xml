@@ -1,36 +1,51 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/header"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentTop="true"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <TextView
-        style="@style/score_label"
-        android:text="Vitórias" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <TextView
-        style="@style/score_valor"
-        android:text="0"
-        android:id="@+id/tvVitorias"/>
+        <TextView
+            style="@style/score_label"
+            android:text="Vitórias" />
 
-    <TextView
-        style="@style/score_label"
-        android:text="Empates" />
+        <TextView
+            android:id="@+id/tvVitorias"
+            style="@style/score_valor"
+            android:text="0" />
 
-    <TextView
-        style="@style/score_valor"
-        android:text="0"
-        android:id="@+id/tvEmpates"/>
+        <TextView
+            style="@style/score_label"
+            android:text="Empates" />
 
-    <TextView
-        style="@style/score_label"
-        android:text="Derrotas" />
+        <TextView
+            android:id="@+id/tvEmpates"
+            style="@style/score_valor"
+            android:text="0" />
 
-    <TextView
-        style="@style/score_valor"
-        android:text="0"
-        android:id="@+id/tvDerrotas"/>
+        <TextView
+            style="@style/score_label"
+            android:text="Derrotas" />
+
+        <TextView
+            android:id="@+id/tvDerrotas"
+            style="@style/score_valor"
+            android:text="0" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#CCC" />
+
 
 
 </LinearLayout>

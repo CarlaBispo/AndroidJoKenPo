@@ -60,18 +60,20 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/containerResultado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="#66FFFFFF"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/ivResultado"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-
-                tools:src="@drawable/empate" />
+                android:background="@drawable/back_resultado"
+                tools:src="@drawable/empate"
+                android:padding="16dp"/>
 
             <TextView
                 android:id="@+id/tvResultado"
