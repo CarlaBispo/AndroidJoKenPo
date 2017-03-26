@@ -39,6 +39,7 @@
             android:text="0" />
     </LinearLayout>
 
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -46,6 +47,20 @@
         android:layout_marginTop="8dp"
         android:background="#CCC" />
 
+    <!--<ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SOM"
+        android:layout_gravity="right"/>
+
+    <TextView
+        android:background="#FF0000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Teste"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:padding="16dp"/>-->
 
 
 </LinearLayout>
